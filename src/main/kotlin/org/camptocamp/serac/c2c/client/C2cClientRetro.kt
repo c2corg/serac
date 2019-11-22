@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface C2cClientRetro {
 
-    @POST("users/loginnnn")
+    @POST("users/login")
     fun login(@Body credentials: Credentials): Call<LoginOutput>
 
     @POST("xreports")
