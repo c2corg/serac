@@ -30,7 +30,7 @@ class XReportController(
     @PostMapping
     fun create(@RequestBody report: XReport): ResponseEntity<CreateResponse> {
         report.validated = false
-        // TODO: set custom data
+        // TODO: set custom data based on auth guy
         report.custom = mapOf("license_number" to "12345678", "validated" to "false")
 
         val createdReport: XReport = xReportRepository.save(report)
