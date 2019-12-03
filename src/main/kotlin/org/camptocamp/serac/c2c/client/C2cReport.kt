@@ -6,7 +6,7 @@ import org.camptocamp.serac.model.XReport
 data class C2cReport(
         val elevation: Int?,
         val nb_participants: Int?,
-        val geometry: String,
+        val geometry: String?,
         val age: Int?,
         val autonomy: String?,
         val avalanche_slope: String?,

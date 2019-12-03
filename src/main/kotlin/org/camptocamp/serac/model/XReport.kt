@@ -10,7 +10,7 @@ data class XReport(
         var custom: Map<String, String>,
         val elevation: Int?,
         val nb_participants: Int?,
-        val geometry: String,
+        val geometry: String?,
         val age: Int?,
         val autonomy: String?,
         val avalanche_slope: String?,
