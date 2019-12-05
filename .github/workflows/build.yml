@@ -1,6 +1,11 @@
 name: Java CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - .*
 
 jobs:
   build:
@@ -21,4 +26,3 @@ jobs:
         name: c2corg/serac-api
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tag: latest
