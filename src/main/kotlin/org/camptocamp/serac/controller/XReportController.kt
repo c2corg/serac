@@ -55,4 +55,11 @@ class XReportController(
 
         return ResponseEntity.noContent().build()
     }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable("id") id: String): ResponseEntity<Void> {
+        val report = xReportRepository.findByIdOrNull(id) ?: return ResponseEntity.notFound().build()
+        xReportRepository.delete(report)
+        return ResponseEntity.noContent().build()
+    }
 }
