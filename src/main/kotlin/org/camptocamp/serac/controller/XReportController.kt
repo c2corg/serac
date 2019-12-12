@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
@@ -17,13 +18,18 @@ class XReportController(
         private val xReportRepository: XReportRepository,
         private val c2cService: C2cService
 ) {
+    // FIXME: filter content depending on rights
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     fun findAll(pageable: Pageable) = xReportRepository.findAll(pageable)
 
+    // FIXME: filter content depending on rights
     @GetMapping("/{id}")
     fun findOne(@PathVariable("id") id: String) =
             xReportRepository.findByIdOrNull(id) ?: throw IllegalArgumentException("no matching report")
 
+    // FIXME: filter content depending on rights
+    // FIXME/ useless now?
     @GetMapping("/validated/{validated}")
     fun findAllValidated(@PathVariable("validated") validated: String, pageable: Pageable) = xReportRepository.findAllValidated(validated, pageable)
 
@@ -37,6 +43,7 @@ class XReportController(
         return ResponseEntity.status(HttpStatus.CREATED).body(CreateResponse.of(createdReport.id ?: "unknown"))
     }
 
+    // FIXME: allow only if admin or owner and not validated
     @PutMapping("/{id}")
     fun edit(@PathVariable("id") id: String, @RequestBody report: XReport): ResponseEntity<Void> {
         // FIXME add right checks to determine if can set validated
@@ -57,6 +64,7 @@ class XReportController(
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     fun delete(@PathVariable("id") id: String): ResponseEntity<Void> {
         val report = xReportRepository.findByIdOrNull(id) ?: return ResponseEntity.notFound().build()
         xReportRepository.delete(report)

@@ -11,7 +11,7 @@
     <groupId>org.camptocamp</groupId>
     <artifactId>serac</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>serac</name>
+    <name>serac-api</name>
     <description>Custom SERAC implementation</description>
 
     <properties>
@@ -28,6 +28,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -51,7 +55,6 @@
             <artifactId>converter-jackson</artifactId>
             <version>${retrofit.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
