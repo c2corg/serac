@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface XReportRepository : MongoRepository<XReport, String> {
-    @Query("{ 'custom.validated' : ?0 }")
-    fun findAllValidated(validated: String, pageable: Pageable): Page<XReport>
+    @Query("{ '\$or': [{'custom.validated' : 'true'}, {'custom.owner' : ?0}]}")
+    fun findAllValidatedOrOwned(owner: String, pageable: Pageable): Page<XReport>
 }

@@ -55,6 +55,5 @@ data class C2cReport(
                     report.locales
             )
         }
-
     }
 }

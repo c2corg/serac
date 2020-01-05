@@ -1,12 +1,12 @@
 package org.camptocamp.serac.model
 
+import org.camptocamp.serac.c2c.client.C2cReport
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "xreport")
 data class XReport(
         @Id var id: String?,
-        var validated: Boolean,
         var custom: Map<String, String>,
         val elevation: Int?,
         val nb_participants: Int?,
@@ -27,4 +27,19 @@ data class XReport(
         val previous_injuries: String?,
         val avalanche_level: String?,
         val locales: Array<Locale>
-)
+) {
+    companion object {
+        @JvmStatic
+        fun public(report: XReport): XReport {
+            return report.copy(
+                    age = null,
+                    autonomy = null,
+                    nb_outings = null,
+                    gender = null,
+                    author_status = null,
+                    activity_rate = null,
+                    previous_injuries = null
+            )
+        }
+    }
+}
