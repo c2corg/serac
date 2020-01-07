@@ -1,19 +1,19 @@
 package org.camptocamp.serac.configuration
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+@Component
 class AuthFilter : OncePerRequestFilter() {
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
-        val auth = AuthToken(listOf(GrantedAuthority { "ROLE_ADMIN" })) // FIXME 
-        SecurityContextHolder.getContext().authentication = auth
+        // FIXME
+        if (request.getHeader("Toto") != null) {
+            SecurityContextHolder.getContext().authentication = AuthToken()
+        }
         filterChain.doFilter(request, response)
     }
 
