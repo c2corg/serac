@@ -10,18 +10,19 @@ data class C2cReport(
         val age: Int?,
         val autonomy: String?,
         val avalanche_slope: String?,
-        val activities: Array<String>,
-        val nb_outings: String?,
+        val event_activity: String,
         val gender: String?,
         val nb_impacted: Int?,
         val date: String?,
         val rescue: Boolean?,
         val author_status: String?,
-        val event_type: Array<String>,
+        val event_type: String?,
         val severity: String?,
         val activity_rate: String?,
         val previous_injuries: String?,
         val avalanche_level: String?,
+        val supervision: String?,
+        val qualification: String?,
         val locales: Array<Locale>
 ) {
     val associations: Associations = Associations(arrayOf(), arrayOf(), arrayOf(), arrayOf(), arrayOf(), arrayOf())
@@ -40,8 +41,7 @@ data class C2cReport(
                     report.age,
                     report.autonomy,
                     report.avalanche_slope,
-                    report.activities,
-                    report.nb_outings,
+                    report.event_activity,
                     report.gender,
                     report.nb_impacted,
                     report.date,
@@ -52,6 +52,8 @@ data class C2cReport(
                     report.activity_rate,
                     report.previous_injuries,
                     report.avalanche_level,
+                    report.supervision,
+                    report.qualification,
                     report.locales
             )
         }

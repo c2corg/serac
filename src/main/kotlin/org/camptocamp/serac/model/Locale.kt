@@ -6,7 +6,6 @@ data class Locale(
         val training: String?,
         val place: String?,
         val route_study: String?,
-        val summary: String?,
         val safety: String?,
         val description: String?,
         val reduce_impact: String?,
