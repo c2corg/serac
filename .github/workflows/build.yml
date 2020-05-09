@@ -26,3 +26,4 @@ jobs:
         name: c2corg/serac-api
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_names: true
